@@ -11,6 +11,10 @@ playButton.addEventListener("click",
     function(){
         // elimina il bottone
         playButton.classList.add("none")
+
+        // Genera 16 numeri casuali
+        const listBomb = randomNumberGenerationRange(1, 16);
+        console.log(listBomb);
     
         // Ogni cella ha un numero progressivo, da 1 a 100.
         for (let i = 1; i <= 100; i++){
@@ -23,7 +27,7 @@ playButton.addEventListener("click",
                 function (){
                 this.classList.toggle("active");
 
-                // ed emetto un messaggio in console con il numero della cella cliccata.
+                // ed emetti un messaggio in console con il numero della cella cliccata.
                 console.log(`hai cliccato la cella con il numero ${i}`);
                 }
             );
