@@ -11,12 +11,12 @@ function randomNumberRange (min, max){
 }
 
 // GENERA NUMERI CASUALI IN UN RANGE DI NUMERI
-function randomNumberGenerationRange (min, max){
+function randomNumberGenerationRange (min, max, count){
     // Crea array vuoto
     const numberList = [];
 
     // Crea un ciclo che genera 16 numeri casuali
-    while (numberList.length < max){
+    while (numberList.length < count){
         let randomNumber = randomNumberRange (min, max);
 
         // inserisci il numero casuale solo se non è gia presente nell'array
