@@ -64,11 +64,21 @@ playButton.addEventListener("click",
                     // Manda messaggio che hai perso
                     const messageLose = document.getElementById("lose-or-win").innerHTML = "HAI PERSO...";
 
-                    // Se clicchiamo su una bomba si toglie la funzione click
+                    // Se clicchi su una bomba si toglie la funzione click
                     const allSquares = document.querySelectorAll(".box");
                     allSquares.forEach(function(square) {
                         square.classList.add("disabled");
                     });
+
+                    // Se clicchi su una bomba si mostrano tutte le bombe
+                    allSquares.forEach(function(square){
+                        let squareNumber = parseInt(square.textContent);
+
+                        if (listBomb.includes(squareNumber)){
+                            square.classList.add("bomb");
+                        }
+                    });
+
                 } else {
                     // Aggiugni classe SALVO
                     this.classList.add("active");
