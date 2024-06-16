@@ -26,13 +26,28 @@ body{
 /* REGOLE BOX */
 
 .box{
-    width: calc(100% / 10);
     aspect-ratio: 1 / 1;
     border: 5px solid #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #000;
+}
+
+.box.disabled{
+    pointer-events: none;
+}
+
+.box.box-100{
+    width: calc(100% / 10);
+}
+
+.box.box-81{
+    width: calc(100% / 9);
+}
+
+.box.box-49{
+    width: calc(100% / 7);
 }
 
 
@@ -50,13 +65,18 @@ body{
 
 /* REGOLE BUTTON */
 
-button{
+button, select{
     width: 200px;
     height: 50px;
     border-radius: 20px;
     background-color: #fff;
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
+   
+}
+
+#start-container{
     position: absolute;
     left: 50%;
     top: 50%;

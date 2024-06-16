@@ -2,21 +2,39 @@
 // prendiamo il container da HTML
 const containerGrid = document.querySelector(".grid-container");
 
-// prendiamo il bottone da HTML
+// prendi il bottone da HTML
 const playButton = document.querySelector("button");
+
+// Prendi contenitore bottone e select da HTML
+const containerStart = document.getElementById("start-container");
 
 // crea un evento al click del bottone
 playButton.addEventListener("click", 
     function(){
-        // elimina il bottone
-        playButton.classList.add("none")
+        // elimina il contenitore
+        containerStart.classList.add("none")
+
+        // Prendi la select da HTML
+        let levelSelect = document.getElementById("level").value;
+        console.log(levelSelect);
+
+        // Crea variabile per il totale delle celle
+        let totalBox;
+
+        // Crea condizione in base al livello per totale delle celle
+        if(levelSelect === "level1"){
+            totalBox = 100;
+        } else if (levelSelect === "level2"){
+            totalBox = 81; 
+        } else if (levelSelect === "level3"){
+            totalBox = 49;
+        }
 
         // Genera 16 numeri casuali
-        const listBomb = randomNumberGenerationRange(1, 100, 16);
+        const listBomb = randomNumberGenerationRange(1, totalBox, 16);
         console.log(listBomb);
 
         // Crea un numero di celle sicure sottraendo box sicuri - box bomba
-        let totalBox = 100;
         let boxBomb = listBomb.length;
         let safeBox = totalBox - boxBomb;
         let clickBoxSafe = 0;
@@ -24,6 +42,15 @@ playButton.addEventListener("click",
         // Ogni cella ha un numero progressivo, da 1 a 100.
         for (let i = 1; i <= totalBox; i++){
         let square = createElementWithClass("div", "box");
+
+        // Crea condizione per assegnare classe a square
+        if (totalBox === 100){
+            square.classList.add("box-100");
+        } else if(totalBox === 81){
+            square.classList.add("box-81");
+        } else if (totalBox === 49){
+            square.classList.add("box-49");
+        }
         square.textContent = i;
         containerGrid.append(square);
         
@@ -32,10 +59,16 @@ playButton.addEventListener("click",
                 function (){
                 if (listBomb.includes(i)) {
                     // Aggiungi classe BOMBA
-                    this.classList.add("bomb")
+                    this.classList.add("bomb");
 
                     // Manda messaggio che hai perso
-                    const messageLose = document.getElementById("lose-or-win").innerHTML = "HAI PERSO..."
+                    const messageLose = document.getElementById("lose-or-win").innerHTML = "HAI PERSO...";
+
+                    // Se clicchiamo su una bomba si toglie la funzione click
+                    const allSquares = document.querySelectorAll(".box");
+                    allSquares.forEach(function(square) {
+                        square.classList.add("disabled");
+                    });
                 } else {
                     // Aggiugni classe SALVO
                     this.classList.add("active");
@@ -45,9 +78,10 @@ playButton.addEventListener("click",
 
                     // ed emetti un messaggio in console con il numero della cella cliccata.
                     console.log(`hai cliccato la cella con il numero ${i}`);
+
                 } if (clickBoxSafe === safeBox){
                     // Manda messaggio che hai vinto
-                   const messageWin = document.getElementById("lose-or-win").innerHTML = "HAI VINTO"
+                   const messageWin = document.getElementById("lose-or-win").innerHTML = "HAI VINTO";
                 }
                 }
             );
