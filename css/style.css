@@ -13,13 +13,20 @@ body{
 /* REGOLE CONTAINER */
 .grid-container{
     width: 50%;
+    height: calc(100vh - 80px);
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    height: 80vh;
+    margin-top: 30px;
 }
 
-.container{
-    height: 100vh;
+.container-points{
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 40px;
 }
 
 
@@ -27,14 +34,12 @@ body{
 
 .box{
     width: calc(100% / 10);
-    aspect-ratio: 1 / 1;
     border: 5px solid #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #000;
 }
-
 
 /* REGOLE ACTIVE BOX */
 
@@ -50,13 +55,19 @@ body{
 
 /* REGOLE BUTTON */
 
-button{
+button, select{
     width: 200px;
     height: 50px;
     border-radius: 20px;
     background-color: #fff;
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
+   
+}
+
+#start-container{
+    text-align: center;
     position: absolute;
     left: 50%;
     top: 50%;

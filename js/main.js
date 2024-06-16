@@ -3,13 +3,16 @@
 const containerGrid = document.querySelector(".grid-container");
 
 // prendiamo il bottone da HTML
-const playButton = document.querySelector("button");
+const playButton = document.getElementById("play");
+
+// Prendi contenitore bottone e select da HTML
+const containerStart = document.getElementById("start-container");
 
 // crea un evento al click del bottone
 playButton.addEventListener("click", 
     function(){
         // elimina il bottone
-        playButton.classList.add("none")
+        containerStart.classList.add("none")
 
         // Genera 16 numeri casuali
         const listBomb = randomNumberGenerationRange(1, 100, 16);
@@ -35,7 +38,7 @@ playButton.addEventListener("click",
                     this.classList.add("bomb")
 
                     // Manda messaggio che hai perso
-                    const messageLose = document.getElementById("lose-or-win").innerHTML = "HAI PERSO..."
+                    const messageLose = document.getElementById("lose-or-win").innerHTML = "HAI PERSO...IL TUO PUNTEGGIO è DI " + clickBoxSafe;
                 } else {
                     // Aggiugni classe SALVO
                     this.classList.add("active");
@@ -45,15 +48,28 @@ playButton.addEventListener("click",
 
                     // ed emetti un messaggio in console con il numero della cella cliccata.
                     console.log(`hai cliccato la cella con il numero ${i}`);
+
+                    const messageWin = document.getElementById("lose-or-win").innerHTML = "STAI FACENDO UN PUNTEGGIO DI..." + clickBoxSafe;
+                
                 } if (clickBoxSafe === safeBox){
                     // Manda messaggio che hai vinto
-                   const messageWin = document.getElementById("lose-or-win").innerHTML = "HAI VINTO"
+                    const messageWin = document.getElementById("lose-or-win").innerHTML = "HAI VINTO E HAI FATTO UN PUNTEGGIO DI " + clickBoxSafe;
                 }
                 }
             );
         }
     }
 );
+
+// Prendi il bottone restart da HTML
+const restartButton = document.getElementById("restart");
+
+// Evento che al click ricarica la pagina
+restartButton.addEventListener("click", 
+    function (){
+        window.location.href=window.location.href;
+    }
+)
 
 
 
