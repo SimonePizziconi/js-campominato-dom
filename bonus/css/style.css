@@ -38,6 +38,8 @@ body{
     justify-content: center;
     align-items: center;
     color: #000;
+    cursor: pointer;
+    color: lightskyblue;
 }
 
 .box.disabled{

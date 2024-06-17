@@ -39,7 +39,7 @@ playButton.addEventListener("click",
         let safeBox = totalBox - boxBomb;
         let clickBoxSafe = 0;
     
-        // Ogni cella ha un numero progressivo, da 1 a 100.
+        // Ogni cella ha un numero progressivo.
         for (let i = 1; i <= totalBox; i++){
         let square = createElementWithClass("div", "box");
 
@@ -93,7 +93,13 @@ playButton.addEventListener("click",
 
                 } if (clickBoxSafe === safeBox){
                     // Manda messaggio che hai vinto
-                   const messageWin = document.getElementById("lose-or-win").innerHTML = "HAI VINTO E HAI FATTO UN PUNTEGGIO DI " + clickBoxSafe;
+                    const messageWin = document.getElementById("lose-or-win").innerHTML = "HAI VINTO E HAI FATTO UN PUNTEGGIO DI " + clickBoxSafe;
+
+                    // Se non ci sono più celle si disattiva la funzione click
+                    const allSquares = document.querySelectorAll(".box");
+                    allSquares.forEach(function(square) {
+                        square.classList.add("disabled");
+                    });
                 }
                 }
             );
